@@ -13,4 +13,4 @@ def item_list(request):
     if q:  # 즉 검색어가 있다면.
         # i = ignore, 즉 알파벳일 경우에는 대소문자를 구분하지 않겠다.
         q5 = q5.filter(name__icontains=q)
-    return render(request, 'shop/item_list.html', {'item_list': q5, 'q': q})
+    return render(request, 'shop/item_list.html', {'item_list': q5, 'q': q, })
