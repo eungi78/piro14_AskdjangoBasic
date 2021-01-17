@@ -9,11 +9,11 @@
     <h1> Ask Company</h1>
 
     <form action="" method ="GET">
-        <input type= "text" name ="q" values = "{{ q }}" />
-        <input type= "submit" name="search" />
+        <input type= "text" name ="word" value = "{{ word }}" />
+        <input type= "submit" value="search" />
     </form>
     <ul>
-        {% for item in item_list %}
+        {% for item in items %}
             <li>
                 {{item.name}}
                 {{item.price}}
