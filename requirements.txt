@@ -1,3 +1,3 @@
-django==2.1.1
-django-extensions=2.1.2
-pillow
+-r reqs/prod_heroku.txt
+
+# 실제 requirements.txt에서 지정을 했기때문에 heroku에 배포할 때는 heroku 시스템에서 requirements.txt을 감지해서 resq/heroku에 있는 내역들을 설치할 것.
