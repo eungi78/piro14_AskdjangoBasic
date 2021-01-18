@@ -14,14 +14,16 @@ def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()  # 이 시점이 db 저장
+            user = form.save()  # 이 시점이 db 저장. 즉 객체 생성
             # 이 시점에서 회원가입하면 자동 로그인 처리하기
             # django/contrib/auth/LoginView에 form_valid가 있음.
             # 이는 form.is_valid일 때 호출되는 함수
             # import하고, form_valid인자로 request와 user를 넘겨주면 로그인 시킴
             auth_login(request, user)
+            next_url = request.GET.get('next') or 'profile'
             # return redirect('login')
-            return redirect('profile')  # 회원가입하면 profile로 바로 이동
+            # return redirect('profile')  # 회원가입하면 profile로 바로 이동
+            return redirect(next_url)
     else:
         form = UserCreationForm()
     return render(request, "accounts/signup.html/", {'form': form, })
@@ -42,7 +44,8 @@ def signup(request):
 #     template_name="accounts/signup.html"
 
 #     def get_success_url(self):
-#         return resolve_url('profile') # import 해야함
+#         next_url = self.request.GET.get('next') or 'profile'
+#         return resolve_url(next_url) # import 해야함
 
 #     def form_valid(self,form):
 #         user=form.save()
