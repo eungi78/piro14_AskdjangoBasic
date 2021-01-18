@@ -6,11 +6,11 @@
     {% block extra_head %}{% endblock %}
   </head>
   <body>
-    <h1>Askdjango Blog</h1>
+    <a href= "{% url "root" %}"><h1>Askdjango Blog</h1></a>
     <hr/>
     <!--django/contrib/auth/context_processors 에서 바로 사용할 수 있는 변수목록을 정의. 그 중에 하나가 user-->
     {% if user.is_authenticated %}
-      {{user}}  
+      <a href="{% url "profile" %}">{{user}}</a>  
       로그아웃
     {% else %}
       회원가입

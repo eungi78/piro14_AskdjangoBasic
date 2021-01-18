@@ -1,8 +1,10 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from . import views
 
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('profile/', views.profile, name='profile'),
 ]
 # cbv에서는 template 연결을 이런 식으로 한다.
 # 설정해주지 않으면 default로 class LoginView의 registration/login.html 로 설정이 되어 있는데,

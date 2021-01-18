@@ -7,5 +7,6 @@ urlpatterns = [
     # path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
     path('blog/', include('blog.urls')),
-    path('', lambda req: redirect('/blog/'))  # 최상위 주소로 갈 시 redirect
+    path('', lambda req: redirect('/blog/'), name="root"),
+    # 최상위 주소로 갈 시 redirect
 ]
